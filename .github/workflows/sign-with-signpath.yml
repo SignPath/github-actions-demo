@@ -1,0 +1,31 @@
+# This workflow is a demo of how to use the Gihub Actions workflow steps for SignPath. For a complete documentation, 
+# view https://github.com/SignPath/github-actions
+
+name: sign-with-signpath
+run-name: Demo workflow signing with SignPath
+on: 
+  push:
+  pull_request:
+  schedule:
+    - cron:  '30 3 * * *' # every day at 3:30am UTC
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+
+    - name: build
+      run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
+    
+    - name: sign
+      # TODO: change to v0.1
+      uses: SignPath/github-actions/actions/submit-signing-request@main
+      with:
+        # TODO: can be removed for PROD deployment
+        connector-url: 'https://githubactions.connectors.fqa.test.signpath.io:15021/'
+        github-token: '${{ secrets.GITHUB_TOKEN }}'
+        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+        organization-id: '${{ SIGNPATH_ORGANIZATION_ID }}'
+        project-slug: 'EXE'
+        signing-policy-slug: 'test-signing'
+        artifact-name: hello-world-signed.exe
