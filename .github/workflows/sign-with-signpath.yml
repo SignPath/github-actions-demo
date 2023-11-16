@@ -28,4 +28,5 @@ jobs:
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
         project-slug: 'EXE'
         signing-policy-slug: 'test-signing'
+        artifact-configuration-slug: 'initial'
         artifact-name: hello-world-signed.exe
