@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: "hello-world" 
-        path: "./build-output/hello-world.exe"
+        path: "./build-output/sample.dll"
         if-no-files-found: error
     
     - name: sign
@@ -40,11 +40,11 @@ jobs:
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
         artifact-name: "hello-world"
-        signed-artifact-destination-path: "build-output/hello-world-signed.exe"
+        signed-artifact-destination-path: "build-output/sample-signed.dll"
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
       with:
         name: "hello-world-signed" 
-        path: "./build-output/hello-world-signed.exe"
+        path: "./build-output/sample-signed.dll"
         if-no-files-found: error
