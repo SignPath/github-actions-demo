@@ -32,7 +32,8 @@ jobs:
       uses: SignPath/github-actions/actions/submit-signing-request@main
       with:
         # TODO: can be removed for PROD deployment
-        connector-url: 'https://githubactions.connectors.fqa.test.signpath.io:15021/'
+        #connector-url: 'https://githubactions.connectors.fqa.test.signpath.io:15021/'
+        #connector-url: 'https://brx6b0w8-44353.euw.devtunnels.ms/'
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
