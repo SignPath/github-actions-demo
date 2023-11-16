@@ -17,11 +17,12 @@ jobs:
     - name: build
       run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
 
-    - name: upload-artifact
+    - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
         name: "hello-world.exe" 
-        path: "build-output/hello-world.exe"
+        path: "./build-output/hello-world.exe"
+        if-no-files-found: error
     
     - name: sign
       # TODO: change to v0.1
@@ -35,4 +36,12 @@ jobs:
         project-slug: 'EXE'
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
-        artifact-name: hello-world.exe
+        artifact-name: "hello-world.exe"
+        signed-artifact-destination-path: "build-output/hello-world-signed.exe"
+
+    - name: upload-signed-artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: "hello-world-signed.exe" 
+        path: "./build-output/hello-world-signed.exe"
+        if-no-files-found: error
