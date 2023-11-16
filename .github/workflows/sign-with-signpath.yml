@@ -14,13 +14,11 @@ jobs:
     runs-on: windows-latest
     steps:
 
+    - name: checkout
+      uses: actions/checkout@v3
+
     - name: build
       run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
-
-    - name: info
-      run: |
-        pwd
-        tree
 
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
