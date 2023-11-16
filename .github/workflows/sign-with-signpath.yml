@@ -24,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: "hello-world" 
-        path: "./build-output/sample.dll"
+        path: "./build-output/hello-world.exe"
         if-no-files-found: error
     
     - name: sign
