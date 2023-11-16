@@ -17,6 +17,11 @@ jobs:
     - name: build
       run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
 
+    - name: info
+      run: |
+        pwd
+        tree
+
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
