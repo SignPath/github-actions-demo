@@ -25,7 +25,7 @@ jobs:
         connector-url: 'https://githubactions.connectors.fqa.test.signpath.io:15021/'
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-        organization-id: '${{ SIGNPATH_ORGANIZATION_ID }}'
+        organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
         project-slug: 'EXE'
         signing-policy-slug: 'test-signing'
         artifact-name: hello-world-signed.exe
