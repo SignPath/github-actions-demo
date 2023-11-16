@@ -10,7 +10,7 @@ on:
     - cron:  '30 3 * * *' # every day at 3:30am UTC
 
 jobs:
-  build:
+  build-and-sign:
     runs-on: windows-latest
     steps:
 
@@ -19,7 +19,8 @@ jobs:
 
     - name: upload-artifact
       uses: actions/upload-artifact@v3
-      with: 
+      with:
+        name: "hello-world.exe" 
         path: "build-output/hello-world.exe"
     
     - name: sign
@@ -34,4 +35,4 @@ jobs:
         project-slug: 'EXE'
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
-        artifact-name: hello-world-signed.exe
+        artifact-name: hello-world.exe
