@@ -23,7 +23,7 @@ jobs:
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: "hello-world.exe" 
+        name: "hello-world" 
         path: "./build-output/hello-world.exe"
         if-no-files-found: error
     
@@ -39,12 +39,12 @@ jobs:
         project-slug: 'EXE'
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
-        artifact-name: "hello-world.exe"
+        artifact-name: "hello-world"
         signed-artifact-destination-path: "build-output/hello-world-signed.exe"
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: "hello-world-signed.exe" 
+        name: "hello-world-signed" 
         path: "./build-output/hello-world-signed.exe"
         if-no-files-found: error
