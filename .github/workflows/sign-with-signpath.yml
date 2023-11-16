@@ -16,6 +16,11 @@ jobs:
 
     - name: build
       run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
+
+    - name: upload-artifact
+      uses: actions/upload-artifact@v3
+      with: 
+        path: "build-output/hello-world.exe"
     
     - name: sign
       # TODO: change to v0.1
