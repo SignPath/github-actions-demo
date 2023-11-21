@@ -28,11 +28,8 @@ jobs:
         if-no-files-found: error
     
     - name: sign
-      # TODO: change to v0.1
-      uses: SignPath/github-actions/actions/submit-signing-request@main
+      uses: SignPath/github-actions/actions/submit-signing-request@v0.1
       with:
-        # TODO: can be removed for PROD deployment
-        connector-url: 'https://githubactions.connectors.fqa.test.signpath.io:15021/'
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
