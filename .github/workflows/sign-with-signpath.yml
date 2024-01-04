@@ -4,10 +4,10 @@
 name: sign-with-signpath
 run-name: Demo workflow signing with SignPath
 on: 
-  push:
-  pull_request:
-  schedule:
-    - cron:  '30 3 * * *' # every day at 3:30am UTC
+#  push:
+ # pull_request:
+#  schedule:
+#    - cron:  '30 3 * * *' # every day at 3:30am UTC
 
 jobs:
   build-and-sign:
@@ -28,11 +28,12 @@ jobs:
         if-no-files-found: error
     
     - name: sign
-      uses: SignPath/github-actions/actions/submit-signing-request@v0.1
+      uses: SignPath/github-actions/actions/submit-signing-request@75b28858d8a6af1ca68457663c64896735726f65
       with:
-        github-token: '${{ secrets.GITHUB_TOKEN }}'
-        api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
-        organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
+        connector-url: 'https://httpdump.app/dumps/39f0d3a5-b21c-4cdd-851b-001749e3685b'
+        github-token: 'abc'
+        api-token: 'def'
+        organization-id: 'ghi'
         project-slug: 'Executable'
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
