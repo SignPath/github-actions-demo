@@ -3,7 +3,8 @@
 
 name: sign-with-signpath
 run-name: Demo workflow signing with SignPath
-on: 
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 #  push:
  # pull_request:
 #  schedule:
