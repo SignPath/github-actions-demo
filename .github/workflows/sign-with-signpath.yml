@@ -8,6 +8,7 @@ on:
   pull_request:
   schedule:
     - cron:  '30 3 * * *' # every day at 3:30am UTC
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
   build-and-sign:
