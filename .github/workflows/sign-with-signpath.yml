@@ -38,11 +38,11 @@ jobs:
         signing-policy-slug: 'test-signing'
         artifact-configuration-slug: 'initial'
         artifact-name: "hello-world"
-        signed-artifact-destination-path: "build-output/hello-world-signed.exe"
+        output-artifact-directory: "build-output/signed"
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
       with:
         name: "hello-world-signed" 
-        path: "./build-output/hello-world-signed.exe"
+        path: "./build-output/signed/hello-world.exe"
         if-no-files-found: error
