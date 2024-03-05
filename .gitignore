@@ -7,3 +7,4 @@ src/wwwroot/js
 _temp
 bom.xml
 verification
+_BuildResult*

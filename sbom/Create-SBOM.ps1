@@ -24,7 +24,7 @@ dotnet tool install cyclonedx --tool-path $tempPath
 
 # 2.b create nuget bom
 $cyclonDxToolPath = Join-Path $tempPath "dotnet-CycloneDX.exe"
-& "${cyclonDxToolPath}" --output "${tempPath}" -f "nuget.bom.xml" --exclude-dev ..\src\DemoExample.csproj
+& "${cyclonDxToolPath}" --output "${tempPath}" -f "nuget.bom.xml" --exclude-dev src\DemoExample.csproj
 
 # 3 Create NPM SBOM
 $packageJsonPath = Join-Path $PSScriptRoot ".." "src" "package.json"
