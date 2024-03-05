@@ -34,7 +34,7 @@ jobs:
         if-no-files-found: error
     
     - name: sign
-      uses: SignPath/github-actions/actions/submit-signing-request@feature/SIGN-6714
+      uses: SignPath/github-actions/actions/submit-signing-request@v0.1
       with:
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
