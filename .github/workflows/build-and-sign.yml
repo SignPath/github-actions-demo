@@ -26,11 +26,14 @@ jobs:
     - name: create SBOM
       run: ./sbom/Create-SBOM.ps1
 
+    - name: package artifacts
+      run: Compress-Archive -Path .\_BuildResult-unsigned\DemoExample.msi,.\_BuildResult-unsigned\bom.xml -DestinationPath .\BuildResult-unsigned.zip -Force
+
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
         name: "demo-application-unsigned" 
-        path: "./_BuildResult-unsigned"
+        path: "./_BuildResult-unsigned.zip"
         if-no-files-found: error
     
     - name: sign
@@ -43,7 +46,7 @@ jobs:
         signing-policy-slug: ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
         artifact-configuration-slug: 'v1'
         artifact-name: "demo-application-unsigned"
-        output-artifact-directory: "_BuildResult-signed"
+        signed-artifact-destination-path: "_BuildResult-signed"
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
