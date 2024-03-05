@@ -1,31 +1,37 @@
 # This workflow is a demo of how to use the Gihub Actions workflow steps for SignPath. For a complete documentation, 
 # view https://github.com/SignPath/github-actions
 
-name: sign-with-signpath
+name: build-and-sign
 run-name: Demo workflow signing with SignPath
 on: 
   push:
+    branches: ["main"]
   pull_request:
   schedule:
     - cron:  '30 3 * * *' # every day at 3:30am UTC
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
-  build-and-sign:
+  build_and_sign:
     runs-on: windows-latest
     steps:
 
     - name: checkout
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: build
-      run: "echo \"This is a dummy build step that creates build-output/hello-world.exe\""
+      run: ./src/Build.ps1
 
-    - name: upload-unsigned-artifact
+    - name: create SBOM
+      run: ./sbom/Create-SBOM.ps1
+
+   - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: "hello-world" 
-        path: "./build-output/hello-world.exe"
+        name: "demo-application-unsigned" 
+        path: "./_BuildResult-unsigned"
         if-no-files-found: error
     
     - name: sign
@@ -34,15 +40,15 @@ jobs:
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
-        project-slug: 'Executable'
-        signing-policy-slug: 'test-signing'
-        artifact-configuration-slug: 'initial'
-        artifact-name: "hello-world"
-        output-artifact-directory: "build-output/signed"
+        project-slug: 'Demo Application'
+        signing-policy-slug: ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
+        artifact-configuration-slug: 'v1'
+        artifact-name: "demo-application-unsigned"
+        output-artifact-directory: "_BuildResult-signed"
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
       with:
-        name: "hello-world-signed" 
-        path: "./build-output/signed/hello-world.exe"
+        name: "demo-application-signed" 
+        path: "_BuildResult-signed"
         if-no-files-found: error
