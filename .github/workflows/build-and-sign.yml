@@ -27,7 +27,7 @@ jobs:
       run: ./sbom/Create-SBOM.ps1
 
     - name: package artifacts
-      run: Compress-Archive -Path .\_BuildResult-unsigned\DemoExample.msi,.\_BuildResult-unsigned\bom.xml -DestinationPath .\BuildResult-unsigned.zip -Force
+      run: Compress-Archive -Path .\_BuildResult-unsigned\DemoExample.msi,.\_BuildResult-unsigned\bom.xml -DestinationPath .\_BuildResult-unsigned.zip -Force
 
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
