@@ -1,0 +1,20 @@
+{
+  "name": "org.signpath.example",
+  "version": "1.0.0",
+  "description": "SignPath Demo example",
+  "main": "index.js",
+  "dependencies": {
+    "typed.js": "^2.0.16",
+    "vivus": "^0.4.6"
+  },
+  "devDependencies": {
+    "@cyclonedx/cyclonedx-npm": "^1.16.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build": "webpack --env NODE_ENV=production --mode=production --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product Name='SignPath Demo' Id='115FE86C-0356-4AA9-95B2-EF9EAE44DD38' UpgradeCode='115FE86C-7349-453F-94F6-BCB5110BA4FD'
+    Language='1033' Codepage='1252' Version='1.0.0' Manufacturer='SignPath GmbH (Demo)'>
+
+    <Package Id='*' Keywords='Installer' Description="SignPath Demo Example Installer"
+      Comments='An Installer of the SignPath Demo Example Project' Manufacturer='SignPath GmbH (Demo)'
+      InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+
+    <Media Id='1' Cabinet='Files.cab' EmbedCab='yes' />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='application'>
+        <Directory Id="INSTALLDIR" Name="SignPath Demo">
+        </Directory>
+      </Directory>
+	</Directory>
+
+  <ComponentGroup Id="DemoExample" Directory="INSTALLDIR">
+            <Component Id="cmpB4EC2627BDB13AAF4ADEC9F474A61E7C" Guid="*">
+                <File Id="fil7C089284176A351615B1D70217773FA1" KeyPath="yes" Source="appsettings.json" />
+            </Component>
+            <Component Id="cmp184FA156A7DCE869481143058C2FA3BF" Guid="*">
+                <File Id="fil52A478DEE2F1F98AF37FB23783348C0B" KeyPath="yes" Source="Microsoft.Extensions.DependencyModel.dll" />
+            </Component>
+            <Component Id="cmp429198165BB8A7365CF79CC666209E97" Guid="*">
+                <File Id="fil4C32C7BBAA89FE6D4952945A70FFB028" KeyPath="yes" Source="DemoExample.deps.json" />
+            </Component>
+            <Component Id="cmp53A17ED33B4966B25AD683D90BDC1F25" Guid="*">
+                <File Id="filF68789BB59050BCA3FB4846186E1D5AF" KeyPath="yes" Source="DemoExample.dll" />
+            </Component>
+            <Component Id="cmpF8FF348BC0CFA551D984F2B9B694009A" Guid="*">
+                <File Id="fil0A5D0C552FFCDA2C37DAF5CA4DE4E44A" KeyPath="yes" Source="DemoExample.exe" />
+            </Component>
+            <Component Id="cmpC0C81FFCBDE18AADB30AE0AC7A55AD51" Guid="*">
+                <File Id="filD50D3656B3C7897DA8660E5FD66FFC4F" KeyPath="yes" Source="DemoExample.runtimeconfig.json" />
+            </Component>
+            <Component Id="cmpEA43EC119CA3987AD64B26976CF541C0" Guid="*">
+                <File Id="filD67056443534F4A531BF982BF601FDFD" KeyPath="yes" Source="DemoExample.staticwebassets.runtime.json" />
+            </Component>
+            <Component Id="cmp077122A497043FB00765F045198924B7" Guid="*">
+                <File Id="fil9BC3F23B210BAC05F723FA555E36739B" KeyPath="yes" Source="Serilog.AspNetCore.dll" />
+            </Component>
+            <Component Id="cmp85006A39828AD6287A0A7BA5C93A7316" Guid="*">
+                <File Id="fil7EC9A578B53CDFA0B84E5877BF5EB96C" KeyPath="yes" Source="Serilog.dll" />
+            </Component>
+            <Component Id="cmp697A10C3A6BC1BEAC8DA7CA8D36D049F" Guid="*">
+                <File Id="filFFC8D00981218415745CC27972EB1752" KeyPath="yes" Source="Serilog.Extensions.Hosting.dll" />
+            </Component>
+            <Component Id="cmpEC6A75A3C04D9A3D5E56DF245E7CD150" Guid="*">
+                <File Id="fil305291DE444A712034744368AB5747DB" KeyPath="yes" Source="Serilog.Extensions.Logging.dll" />
+            </Component>
+            <Component Id="cmpE772DF469EA003204804A9484C264860" Guid="*">
+                <File Id="filBF4F9183D716FD986615B7B4C627D4FA" KeyPath="yes" Source="Serilog.Formatting.Compact.dll" />
+            </Component>
+            <Component Id="cmpCBEE1A0729E31038D781A3C42957F998" Guid="*">
+                <File Id="fil249A6A712F0C53DF43299E2D926F9BF5" KeyPath="yes" Source="Serilog.Settings.Configuration.dll" />
+            </Component>
+            <Component Id="cmp57205D5BEB00C546377AB5252B0F7B1A" Guid="*">
+                <File Id="fil6B507FC722F4E42D4A05A4E705A0E816" KeyPath="yes" Source="Serilog.Sinks.Console.dll" />
+            </Component>
+            <Component Id="cmp6628B9D250F16DED95EB784C6A4962A7" Guid="*">
+                <File Id="filDB44C26586DE3A655BF59F45FB6836BF" KeyPath="yes" Source="Serilog.Sinks.Debug.dll" />
+            </Component>
+            <Component Id="cmp9075985A78A1DF13230357DE5CB220F8" Guid="*">
+                <File Id="fil973844A6487E78B7324E885EC6786AAB" KeyPath="yes" Source="Serilog.Sinks.File.dll" />
+            </Component>
+        </ComponentGroup>
+
+    <Feature Id='Complete' Level='1'>
+      <ComponentGroupRef Id='DemoExample' />
+    </Feature>
+
+  </Product>
+</Wix>
