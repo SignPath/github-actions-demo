@@ -5,7 +5,6 @@ name: build-and-sign
 run-name: Demo workflow signing with SignPath
 on: 
   push:
-    branches: ["main"]
   pull_request:
   schedule:
     - cron:  '30 3 * * *' # every day at 3:30am UTC

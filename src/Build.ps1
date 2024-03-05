@@ -1,9 +1,9 @@
 # build .Net application
-dotnet build --configuration Release
+dotnet build --configuration Release src/DemoExample.csproj
 
 # build MSI installer
-Copy-Item src\installer\description.wxs .\src\bin\Release\net7.0\description.wxs -Force
-Push-Location .src\bin\Release\net7.0
+Copy-Item .\src\installer\description.wxs .\src\bin\Release\net7.0\description.wxs -Force
+Push-Location .\src\bin\Release\net7.0
 & "${env:WIX}bin\candle.exe" description.wxs
 & "${env:WIX}bin\light.exe" description.wixobj -out DemoExample.msi
 Pop-Location
