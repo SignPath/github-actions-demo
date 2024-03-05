@@ -46,7 +46,10 @@ jobs:
         signing-policy-slug: ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
         artifact-configuration-slug: 'v1'
         artifact-name: "demo-application-unsigned"
-        signed-artifact-destination-path: "_BuildResult-signed"
+        signed-artifact-destination-path: "_BuildResult-signed.zip"
+
+    - name: decompress signed artifact
+      run: Expand-Archive -Path .\_BuildResult-signed.zip -DestinationPath _BuildResult-signed
 
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
