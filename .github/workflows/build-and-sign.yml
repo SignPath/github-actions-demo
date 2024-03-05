@@ -27,7 +27,7 @@ jobs:
     - name: create SBOM
       run: ./sbom/Create-SBOM.ps1
 
-   - name: upload-unsigned-artifact
+    - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v3
       with:
         name: "demo-application-unsigned" 
@@ -40,7 +40,7 @@ jobs:
         github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
-        project-slug: 'Demo Application'
+        project-slug: 'Demo_Application'
         signing-policy-slug: ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
         artifact-configuration-slug: 'v1'
         artifact-name: "demo-application-unsigned"
