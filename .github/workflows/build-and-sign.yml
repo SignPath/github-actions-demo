@@ -30,7 +30,7 @@ jobs:
       run: Compress-Archive -Path .\_BuildResult-unsigned\DemoExample.msi,.\_BuildResult-unsigned\bom.xml -DestinationPath .\_BuildResult-unsigned.zip -Force
 
     - name: upload-unsigned-artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: "demo-application-unsigned" 
         path: "./_BuildResult-unsigned.zip"
