@@ -35,22 +35,20 @@ jobs:
         name: "demo-application-unsigned" 
         path: "./_BuildResult-unsigned.zip"
         if-no-files-found: error
-    
+
+
     - name: sign
-      uses: SignPath/github-actions/actions/submit-signing-request@v0.1
+      uses: signpath/github-action-submit-signing-request@v0.3
       with:
-        github-token: '${{ secrets.GITHUB_TOKEN }}'
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
         project-slug: 'Demo_Application'
-        signing-policy-slug: ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
+        signing-policy-slug:  ${{ github.ref == 'refs/heads/main' && 'release-signing' || 'test-signing' }}
         artifact-configuration-slug: 'v1'
-        artifact-name: "demo-application-unsigned"
-        signed-artifact-destination-path: "_BuildResult-signed.zip"
-
-    - name: decompress signed artifact
-      run: Expand-Archive -Path .\_BuildResult-signed.zip -DestinationPath _BuildResult-signed
-
+        github-artifact-name:  "demo-application-unsigned"
+        wait-for-completion: true
+        output-artifact-directory: 'demo-application-signed'
+    
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v3
       with:
