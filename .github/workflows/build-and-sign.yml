@@ -53,5 +53,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: "demo-application-signed" 
-        path: "_BuildResult-signed"
+        path: "demo-application-signed"
         if-no-files-found: error
