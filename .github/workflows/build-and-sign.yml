@@ -30,7 +30,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: "demo-application-unsigned" 
-        path: "./_BuildResult-unsigned.zip"
         if-no-files-found: error
         path: |
           .\_BuildResult-unsigned\DemoExample.msi
