@@ -52,4 +52,7 @@ if (-Not (Test-Path $cycloneDxCliToolPath)) {
 # 4.b merge both SBOMs into a final one
 $nugetBomPath = Join-Path $tempPath "nuget.bom.xml"
 $finalBomPath = Join-Path $PSScriptRoot ".." "_BuildResult-unsigned" "bom.xml"
+$finalBomPathJson = Join-Path $PSScriptRoot ".." "_BuildResult-unsigned" "bom.json"
 & "${cycloneDxCliToolPath}" merge --input-files "${npmBomPath}" "${nugetBomPath}" --output-format "xml" --output-file "${finalBomPath}" --group "com.SignPath.demos" --name "SignPath Demo Application" --version "1.0.0"
+
+& "${cycloneDxCliToolPath}" merge --input-files "${npmBomPath}" "${nugetBomPath}" --output-format "json" --output-file "${finalBomPathJson}" --group "com.SignPath.demos" --name "SignPath Demo Application" --version "1.0.0"
