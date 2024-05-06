@@ -10,6 +10,9 @@ on:
     - cron:  '30 3 * * *' # every day at 3:30am UTC
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
+permissions:
+  attestations: write
+
 jobs:
   build_and_sign:
     runs-on: windows-latest
@@ -23,8 +26,18 @@ jobs:
     - name: build
       run: ./src/Build.ps1
 
+   - name: Attest Build Provenance
+      uses: actions/attest-build-provenance@897ed5eab6ed058a474202017ada7f40bfa52940 # v1.0.0
+      with:
+      subject-path: ".\_BuildResult-unsigned\DemoExample.msi"
+
     - name: create SBOM
       run: ./sbom/Create-SBOM.ps1
+
+    - uses: actions/attest-sbom@v1
+      with:
+        subject-path: '.\_BuildResult-unsigned\DemoExample.msi'
+        sbom-path: '.\_BuildResult-unsigned\bom.xml'
 
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v4
