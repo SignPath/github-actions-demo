@@ -31,15 +31,15 @@ jobs:
    - name: Attest Build Provenance
       uses: actions/attest-build-provenance@897ed5eab6ed058a474202017ada7f40bfa52940 # v1.0.0
       with:
-      subject-path: ".\_BuildResult-unsigned\DemoExample.msi"
+      subject-path: .\_BuildResult-unsigned\DemoExample.msi
 
     - name: create SBOM
       run: ./sbom/Create-SBOM.ps1
 
     - uses: actions/attest-sbom@v1
       with:
-        subject-path: '.\_BuildResult-unsigned\DemoExample.msi'
-        sbom-path: '.\_BuildResult-unsigned\bom.xml'
+        subject-path: .\_BuildResult-unsigned\DemoExample.msi
+        sbom-path: .\_BuildResult-unsigned\bom.xml
 
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v4
