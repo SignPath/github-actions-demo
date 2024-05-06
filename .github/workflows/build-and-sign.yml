@@ -39,7 +39,7 @@ jobs:
     - uses: actions/attest-sbom@v1
       with:
         subject-path: .\_BuildResult-unsigned\DemoExample.msi
-        sbom-path: .\_BuildResult-unsigned\bom.xml
+        sbom-path: .\_BuildResult-unsigned\bom.json
 
     - name: upload-unsigned-artifact
       uses: actions/upload-artifact@v4
