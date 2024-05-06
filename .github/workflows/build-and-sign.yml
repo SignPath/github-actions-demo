@@ -10,11 +10,12 @@ on:
     - cron:  '30 3 * * *' # every day at 3:30am UTC
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
+permissions:
+  attestations: write
+
 jobs:
   build_and_sign:
     runs-on: windows-latest
-    permissions:
-      attestations: write
     steps:
 
     - name: checkout
