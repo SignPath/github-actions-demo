@@ -11,7 +11,9 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 permissions:
+  id-token: write
   attestations: write
+  contents: read
 
 jobs:
   build_and_sign:
