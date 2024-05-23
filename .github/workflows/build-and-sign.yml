@@ -1,5 +1,4 @@
-# This workflow is a demo of how to use the Gihub Actions workflow steps for SignPath. For a complete documentation, 
-# view https://github.com/SignPath/github-actions
+# see /README.md
 
 name: build-and-sign
 run-name: Demo workflow signing with SignPath
@@ -38,7 +37,11 @@ jobs:
     - name: sign
       uses: signpath/github-action-submit-signing-request@v0.3
       env:
-        SIGNPATH_SIGNING_POLICY_SLUG: ${{ (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) && 'release-signing' || 'test-signing' }}
+        # select release-signing policy for main and release branches
+        SIGNPATH_SIGNING_POLICY_SLUG: | 
+          ${{ (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) 
+            && 'release-signing' 
+            || 'test-signing' }}
       with:
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
