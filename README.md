@@ -18,16 +18,17 @@ This project demonstrates the following attempts to violate SignPath policies an
 To use this demo with your own SignPath subscription, you need to get access to SignPath's GitHub Actions preview. Please contact support@signpath.io.
 
 * Fork this repository
+  * Uncheck _Copy the main branch only_
 * In your SignPath organization, create a project with 
   * Slug: `Demo_Application` 
-  * Repository URL: URL of your forked repository
+  * Repository URLs: Your forked GitHub repository, e.g. `https://github.com/my/github-actions-demo`
   * Trusted Build Systems: Link _GitHub Actions (Preview)_
   * Add the following artifact configuration as default: [.signpath/artifact-configurations/default.xml](.signpath/artifact-configurations/default.xml)
   * Add a `test-signing` signing policy
   * Add a `release-signing` signing policy with origin verification enabled and restricted to `main` and `release/*` branches
 * Create an [API token] in SignPath and add it as a GitHub Actions secret `SIGNPATH_API_TOKEN` (make sure the user is a submitter in your signing policies)
-* Add your SignPath organization ID as a GitHub Actions variable `SIGNPATH_ORGANIZATION_ID` 
-* Enable Actions for your repository
+* Add your SignPath _Organization ID_ as a GitHub Actions variable `SIGNPATH_ORGANIZATION_ID` (click your organization's name at the upper right corner)
+* Enable Actions for your GitHub repository
 
 
 [signing policy]: https://about.signpath.io/documentation/projects#signing-policies
