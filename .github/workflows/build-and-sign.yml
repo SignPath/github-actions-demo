@@ -51,6 +51,7 @@ jobs:
         github-artifact-id:  "${{steps.upload-unsigned-artifact.outputs.artifact-id}}"
         wait-for-completion: true
         output-artifact-directory: 'demo-application-signed'
+        github-extended-verification-token: '${{ secrets.EXTENDED_VERIFICATION_TOKEN }}'
     
     - name: upload-signed-artifact
       uses: actions/upload-artifact@v4
