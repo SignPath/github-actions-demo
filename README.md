@@ -22,7 +22,7 @@ To use this demo with your own SignPath subscription, you need to get access to 
 * In your SignPath organization, create a project with 
   * Slug: `Demo_Application` 
   * Repository URLs: Your forked GitHub repository, e.g. `https://github.com/my/github-actions-demo`
-  * Trusted Build Systems: Link _GitHub Actions (Preview)_
+  * Trusted Build Systems: Link _GitHub.com_
   * Add the following artifact configuration as default: [.signpath/artifact-configurations/default.xml](.signpath/artifact-configurations/default.xml)
   * Add a `test-signing` signing policy
   * Add a `release-signing` signing policy with origin verification enabled and restricted to `main` and `release/*` branches
