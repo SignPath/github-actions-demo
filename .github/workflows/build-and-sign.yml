@@ -1,5 +1,4 @@
-# This workflow is a demo of how to use the Gihub Actions workflow steps for SignPath. For a complete documentation, 
-# view https://github.com/SignPath/github-actions
+# see /README.md
 
 name: build-and-sign
 run-name: Demo workflow signing with SignPath
@@ -35,7 +34,7 @@ jobs:
           .\_BuildResult-unsigned\bom.xml
 
     - name: sign
-      uses: signpath/github-action-submit-signing-request@v0.4
+      uses: signpath/github-action-submit-signing-request@v1
       env:
         # select release-signing policy for main and release branches
         SIGNPATH_SIGNING_POLICY_SLUG: | 
