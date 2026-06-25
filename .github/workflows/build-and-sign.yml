@@ -44,6 +44,7 @@ jobs:
             && 'release-signing' 
             || 'test-signing' }}
       with:
+        connector-url: https://pipelineconnector-qa1.connectors.dev.signpath.io:15001/GitHubActions/GitHubCom
         api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
         organization-id: '${{ vars.SIGNPATH_ORGANIZATION_ID }}'
         project-slug: 'Demo_Application'
